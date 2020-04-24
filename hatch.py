@@ -11,7 +11,7 @@ def vesting_curve(day: int, cliff_days: int, halflife_days: float) -> float:
 
 def convert_80p_to_cliff_and_halflife(days: int, v_ratio: int = 2) -> Tuple[float, float]:
     """
-    For user's convenience, we ask him after how many days he would like 80% of his tokens to be unlocked.
+    For user's convenience, we ask them after how many days they would like 80% of their tokens to be unlocked.
     This needs to be converted into a half life (unit days).
     2.321928094887362 is log(base0.5) 0.2, or log 0.2 / log 0.5.
     v_ratio is cliff / halflife, and its default is determined by Commons Stack
