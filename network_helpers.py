@@ -26,6 +26,7 @@ def get_proposals(network):
 def get_participants(network):
     return get_nodes_by_type(network, "participant")
 
+# Relative Influence is a potential variable to optimize 
 def initial_social_network(network: nx.DiGraph, scale = 1, sigmas=3) -> nx.DiGraph:
     participants = get_participants(network)
 
@@ -39,6 +40,7 @@ def initial_social_network(network: nx.DiGraph, scale = 1, sigmas=3) -> nx.DiGra
                     network.edges[(i,j)]['type'] = 'influence'
     return network
 
+# Conflict Rate is a potential variable to optimize 
 def initial_conflict_network(network: nx.DiGraph, rate = .25) -> nx.DiGraph:
     proposals = get_proposals(network)
 
@@ -71,6 +73,8 @@ def add_proposals_and_relationships_to_network(n: nx.DiGraph, proposals: int, fu
             n.edges[(i, j)]['conviction'] = 0
             n.edges[(i, j)]['type'] = 'support'
 
+# Conflict Rate is a potential variable to optimize 
+# Relative Influence is a potential variable to optimize 
         n = initial_conflict_network(n, rate = .25)
         n = initial_social_network(n, scale = 1)
     return n
